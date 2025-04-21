@@ -1,0 +1,25 @@
+{
+  "name": "node",
+  "version": "1.0.0",
+  "description": "Learning Node",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/PriyankaInsan/Node.git"
+  },
+  "keywords": [
+    "node",
+    "learn",
+    "youtube"
+  ],
+  "author": "priyankaInsan",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/PriyankaInsan/Node/issues"
+  },
+  "homepage": "https://github.com/PriyankaInsan/Node#readme"
+}
