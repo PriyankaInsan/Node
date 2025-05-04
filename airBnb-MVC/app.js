@@ -5,6 +5,7 @@ const path= require('path');
 const bodyParser= require('body-parser');
 const {hostRouter} = require('./routes/hostRouter');
 const rootPath= require('./utils/pathUrl');
+const { error } = require('./controller/error');
 
 app.set('view engine','ejs');
 app.set('views','views');
@@ -17,10 +18,8 @@ app.use((req,res,next)=>{
     next();
 });
 app.use(userRouter);
-app.use(hostRouter);
-app.use((req,res,next)=>{
-    res.status(404).render('404Found');
-})
+app.use("/host",hostRouter);
+app.use(error);
 app.listen(3002,()=>{
     console.log("starting airbnb 3002");
 })

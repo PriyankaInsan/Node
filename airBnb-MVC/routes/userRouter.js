@@ -1,12 +1,12 @@
 const express = require('express')
 const userRouter = express.Router();
-const { registeredHome } = require('../controller/home');
+const storeController = require('../controller/storeController');
 
-
-userRouter.get('/',(req,res,next)=>{
-    console.log("register",registeredHome);
-    // res.sendFile(path.join(rootPath,'views','home.html'));
-    res.render('home',{registeredHome});
-});
+userRouter.get('/',storeController.getHome);
+userRouter.get('/homeList',storeController.getHomeList);
+userRouter.get('/homeList/:homeId',storeController.getHomeDetails);
+userRouter.get('/bookings',storeController.getBookings);
+userRouter.get('/favorite',storeController.getfavoriteList);
+userRouter.post('/favorite',storeController.postfavoriteList);
 
 exports.userRouter= userRouter;
