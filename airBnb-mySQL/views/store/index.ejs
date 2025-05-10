@@ -1,5 +1,5 @@
 <%- include('../partials/header')%>
-<h1 class="text-red-400 text-2xl text-center font-bold mb-5 mt-2" >Welcome to Admin AIrBnb</h1>
+<h1 class="text-red-400 text-2xl text-center font-bold mb-5 mt-2" >Welcome to AIrBnb</h1>
 
 <div class="flex">
     <% registeredHome.forEach((home)=>{%>
@@ -9,13 +9,7 @@
             <div class="text-lg text-gray-800">Location: <%= home.location %></div>
             <div class="text-lg text-gray-800">Rating: <%= home.rating %></div>
             <div class="text-lg text-gray-800"><%= home.photo %></div>
-            <a href="/host/editHome/<%= home.id%>?editing=true"><button class="w-full bg-red-500 text-white py-2 rounded-md hover:bg-red-600 transition duration-300">Edit</button></a>
-            <div>
-                <form action="/host/deleteHome/<%= home.id %>" method="POST">
-                    <button class="w-full bg-red-500 text-white py-2 mt-2 rounded-md hover:bg-red-600 transition duration-300" type="submit">Delete</button>
-                </form>
-            </div>
-        </div>
+            <div><button class="w-full bg-red-500 text-white py-2 rounded-md hover:bg-red-600 transition duration-300">Book</button></div>        </div>
     <%}) %>
 </div>
 
