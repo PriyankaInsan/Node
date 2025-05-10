@@ -6,7 +6,9 @@ exports.getHome=(req,res,next)=>{
 exports.postHome= (req,res,next)=>{
     const{name,price,rating,location,photo}= req.body;
     const obj= new Home(name,price,rating,location,photo);
-    obj.save();
+    obj.save().then(()=>{
+        console.log("Home saved successfully");
+    });
     res.render('host/success');
 };
 exports.getHomeList= (req,res,next)=>{
