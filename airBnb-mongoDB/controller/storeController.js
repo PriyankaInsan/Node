@@ -3,20 +3,19 @@ const Favorite = require("../models/favorite");
 const Home = require("../models/home");
 
 exports.getHome= (req,res,next)=>{
-    Home.getRegisteredList().then(([registeredHome])=>{
+    Home.getRegisteredList().then(registeredHome=>{
         res.render('store/index',{registeredHome});
     });
 }
 
 exports.getHomeList= (req,res,next)=>{
-    Home.getRegisteredList().then(([registeredHome])=>{
+    Home.getRegisteredList().then(registeredHome=>{
         res.render('store/home-list',{registeredHome});
     });
 }
 exports.getHomeDetails= (req,res,next)=>{
     const homeId = req.params.homeId;
-    Home.getHomeById(homeId).then(([homes])=>{
-        const home= homes[0];
+    Home.getHomeById(homeId).then(home=>{
         if(!home){
             res.redirect('homeList');
         }else{
@@ -25,17 +24,17 @@ exports.getHomeDetails= (req,res,next)=>{
     })
 }
 exports.getBookings= (req,res,next)=>{
-    Home.getRegisteredList().then(([registeredHome])=>{
+    Home.getRegisteredList().then(registeredHome=>{
         res.render('store/bookings',{registeredHome});
     });
 }
 
 exports.getfavoriteList= (req,res,next)=>{
     Favorite.getFavoriteList().then(([favoriteList])=>{
-        Home.getRegisteredList().then(([registeredHome])=>{
+        Home.getRegisteredList().then(registeredHome=>{
             console.log("favoriteList,", favoriteList);
             console.log("registeredHome,", registeredHome);
-            const result=favoriteList.map(id=> registeredHome.find(home=>home.id===id.id));
+            const result=favoriteList.map(id=> registeredHome.find(home=>home._id===id.id));
             console.log("result in get",result);
             res.render('store/favorite-list',{favoriteList:result})
 

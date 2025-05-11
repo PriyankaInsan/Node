@@ -1,3 +1,4 @@
+const { ObjectId } = require("mongodb");
 const Home = require("../models/home");
 
 exports.getHome=(req,res,next)=>{
@@ -12,15 +13,14 @@ exports.postHome= (req,res,next)=>{
     res.render('host/success');
 };
 exports.getHomeList= (req,res,next)=>{
-    Home.getRegisteredList().then(([registeredHome])=>{
+    Home.getRegisteredList().then(registeredHome=>{
         res.render('host/host-home-list',{registeredHome});
     });
 }
 exports.getEditHome= (req,res,next)=>{
     const homeId=req.params.homeId;
     const editing= req.query.editing === 'true';
-    Home.getHomeById(homeId).then(([homes])=>{
-        const home= homes[0];
+    Home.getHomeById(homeId).then(home=>{
         if(!home){
             res.redirect('/host/homeList');
         }else{
@@ -29,14 +29,12 @@ exports.getEditHome= (req,res,next)=>{
     );
 }
 exports.postEditHome= (req,res,next)=>{
-    const homeData=req.body;
-    Home.getRegisteredList().then(([registeredHome])=>{
-        console.log("in edit registeredHome",registeredHome,"");
-        console.log("in edit homeData",homeData,"");
-
-        const updatedList=registeredHome.map((home)=>home.id===Number(homeData.id)?homeData:home)
-        res.render('host/host-home-list',{registeredHome:updatedList});
+    const {name,price,rating,location,photo,id}=req.body;
+    const home = new Home(name,price,rating,location,photo,id)
+    home.save().then(result=>{
+        console.log("result", result);
     });
+    res.redirect('/host/homeList');
 }
 
 exports.deleteHome= (req,res,next)=>{

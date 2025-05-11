@@ -9,9 +9,9 @@
             <div class="text-lg text-gray-800">Location: <%= home.location %></div>
             <div class="text-lg text-gray-800">Rating: <%= home.rating %></div>
             <div class="text-lg text-gray-800"><%= home.photo %></div>
-            <a href="/host/editHome/<%= home.id%>?editing=true"><button class="w-full bg-red-500 text-white py-2 rounded-md hover:bg-red-600 transition duration-300">Edit</button></a>
+            <a href="/host/editHome/<%= home._id%>?editing=true"><button class="w-full bg-red-500 text-white py-2 rounded-md hover:bg-red-600 transition duration-300">Edit</button></a>
             <div>
-                <form action="/host/deleteHome/<%= home.id %>" method="POST">
+                <form action="/host/deleteHome/<%= home._id %>" method="POST">
                     <button class="w-full bg-red-500 text-white py-2 mt-2 rounded-md hover:bg-red-600 transition duration-300" type="submit">Delete</button>
                 </form>
             </div>

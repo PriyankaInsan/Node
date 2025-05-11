@@ -1,11 +1,11 @@
 const express= require('express');
-const {userRouter} = require('./routes/userRouter')
+// const {userRouter} = require('./routes/userRouter')
 const app= express();
 const path= require('path');
 const bodyParser= require('body-parser');
-const {hostRouter} = require('./routes/hostRouter');
+// const {hostRouter} = require('./routes/hostRouter');
 const rootPath= require('./utils/pathUrl');
-const { error } = require('./controller/error');
+// const { error } = require('./controller/error');
 const {mongoConnect} = require('./utils/databaseUtil');
 
 app.set('view engine','ejs');
@@ -18,10 +18,17 @@ app.use((req,res,next)=>{
     console.log("req.url, req.method", req.url, req.method);
     next();
 });
-app.use(userRouter);
-app.use("/host",hostRouter);
-app.use(error);
+// app.use(userRouter);
+// app.use("/host",hostRouter);
+// app.use(error);
 mongoConnect((client)=>{
+    const { userRouter } = require('./routes/userRouter');
+    const { hostRouter } = require('./routes/hostRouter');
+    const { error } = require('./controller/error');
+
+    app.use(userRouter);
+    app.use("/host", hostRouter);
+    app.use(error);
     app.listen(3002,()=>{
         console.log("starting airbnb 3002");
     })

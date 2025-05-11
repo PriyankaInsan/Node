@@ -9,7 +9,7 @@
         <br>
         <input class="w-full border rounded-md shadow-md px-4 py-2 mb-4 "id="location" name="location" type="text" placeholder="Enter Location" autocomplete="on" value="<%= editing?home.location:'' %>"/>
         <br>
-        <input type="hidden" name="id" value="<%=editing?home.id:'' %>"/>
+        <input type="hidden" name="id" value="<%=editing?home._id:'' %>"/>
         <select class="w-full border rounded-md shadow-md px-4 py-2 mb-4 " name="rating" >
             <option value="<%= editing?home.rating:'' %>">Select Rating</option>
             <% [...Array(5).keys()].map((ele,i)=>{%>

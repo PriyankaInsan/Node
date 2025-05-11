@@ -10,7 +10,7 @@
             <div class="text-lg text-gray-800">Rating: <%= home.rating %></div>
             <div class="text-lg text-gray-800"><%= home.photo %></div>
             <div><button class="w-full bg-red-500 text-white py-2 rounded-md hover:bg-red-600 transition duration-300">Book</button></div> 
-            <a href="/homeList/<%= home.id%>"><button class="w-full bg-red-500 text-white py-2 mt-2 rounded-md hover:bg-red-600 transition duration-300">Details</button></a>   
+            <a href="/homeList/<%= home._id%>"><button class="w-full bg-red-500 text-white py-2 mt-2 rounded-md hover:bg-red-600 transition duration-300">Details</button></a>   
             <%- include('../partials/favorite',{home})%>            
         </div>
     <%}) %>
