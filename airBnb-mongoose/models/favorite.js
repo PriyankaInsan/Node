@@ -1,18 +1,12 @@
-const { ObjectId } = require("mongodb");
-const { getDB } = require("../utils/databaseUtil");
-const db= getDB();
+const mongoose = require("mongoose");
 
-module.exports= class Favorite{
+const favoriteSchema= mongoose.Schema({
+    id:{type:mongoose.Schema.Types.ObjectId, ref:'Home', require:true, unique:true},
+    name:{type:String, require:true},
+    price:{type:Number, require:true},
+    location:{type:String, require:true},
+    rating:Number,
+    photo:String,
+})
 
-   static getFavoriteList(){
-        return db.collection("favorite").find().toArray();
-        // return db.execute('SELECT * FROM favoriteIds');
-    }
-
-    static postFavoriteList(home){
-        return db.collection("favorite").insertOne(home);
-
-        // return db.execute('INSERT INTO favoriteIds(id) VALUES (?)',[homeId]);
-
-    }
-}
+module.exports= mongoose.model('Favorite',favoriteSchema);
