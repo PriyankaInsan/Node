@@ -3,13 +3,13 @@ const Home = require("../models/home");
 
 exports.getHome= (req,res,next)=>{
     Home.find().then(registeredHome=>{
-        res.render('store/index',{registeredHome});
+        res.render('store/index',{registeredHome, isLoggedIn:req.isLoggedIn});
     });
 }
 
 exports.getHomeList= (req,res,next)=>{
     Home.find().then(registeredHome=>{
-        res.render('store/home-list',{registeredHome});
+        res.render('store/home-list',{registeredHome, isLoggedIn:req.isLoggedIn});
     });
 }
 exports.getHomeDetails= (req,res,next)=>{
@@ -18,19 +18,19 @@ exports.getHomeDetails= (req,res,next)=>{
         if(!home){
             res.redirect('homeList');
         }else{
-            res.render('store/home-details',{home})
+            res.render('store/home-details',{home, isLoggedIn:req.isLoggedIn})
         }
     })
 }
 exports.getBookings= (req,res,next)=>{
     Home.find().then(registeredHome=>{
-        res.render('store/bookings',{registeredHome});
+        res.render('store/bookings',{registeredHome, isLoggedIn:req.isLoggedIn});
     });
 }
 
 exports.getfavoriteList= (req,res,next)=>{
     Favorite.find().then(favoriteList=>{
-        res.render('store/favorite-list',{favoriteList})
+        res.render('store/favorite-list',{favoriteList, isLoggedIn:req.isLoggedIn})
     })
 }
 

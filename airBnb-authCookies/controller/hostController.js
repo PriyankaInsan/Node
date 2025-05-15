@@ -1,7 +1,7 @@
 const Home = require("../models/home");
 
 exports.getHome=(req,res,next)=>{
-    res.render('host/edit-home',{editing:false});
+    res.render('host/edit-home',{editing:false,isLoggedIn:req.isLoggedIn});
 };
 exports.postHome= (req,res,next)=>{
     const{name,price,rating,location,photo}= req.body;
@@ -9,11 +9,11 @@ exports.postHome= (req,res,next)=>{
     obj.save().then(()=>{
         console.log("Home saved successfully");
     });
-    res.render('host/success');
+    res.render('host/success',{isLoggedIn:req.isLoggedIn});
 };
 exports.getHomeList= (req,res,next)=>{
     Home.find().then(registeredHome=>{
-        res.render('host/host-home-list',{registeredHome});
+        res.render('host/host-home-list',{registeredHome,isLoggedIn:req.isLoggedIn});
     });
 }
 exports.getEditHome= (req,res,next)=>{
@@ -23,7 +23,7 @@ exports.getEditHome= (req,res,next)=>{
         if(!home){
             res.redirect('/host/homeList');
         }else{
-            res.render('host/edit-home',{home, editing})
+            res.render('host/edit-home',{home, editing,isLoggedIn:req.isLoggedIn})
         }}
     );
 }

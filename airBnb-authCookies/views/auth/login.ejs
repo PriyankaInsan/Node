@@ -1,0 +1,14 @@
+<%- include('../partials/header')%>
+<main class="container mx-auto mt-8 p-8 bg-white rounded-lg shadow-md">
+    <h1 class="text-3xl font-bold mb-6 text-center text-gray-800">Login on AirBnB</h1>
+    <form class="max-w-md mx-auto" action="/login" method="post">
+        <!-- <label for="name" >Name</label> -->
+        <input class="w-full border rounded-md shadow-md px-4 py-2 mb-4 "id="name" name="name" type="text" placeholder="Enter Name" autocomplete="on" value=""/>
+        <br>
+        <input class="w-full border rounded-md shadow-md px-4 py-2 mb-4 "id="password" name="password" type="password" placeholder="Enter password" autocomplete="on" value=""/>
+        <br>
+        <input type="submit" value="Login" class="w-full bg-red-500 text-white py-2 rounded-md hover:bg-red-600 transition duration-300" />
+    </form>
+</main>
+</body>
+</html>
