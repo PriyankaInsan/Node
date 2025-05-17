@@ -2,15 +2,7 @@
 <main class="container mx-auto mt-12 p-8">
     <h1 class="text-5xl font-extrabold mb-10 text-center text-gray-800">Sign Up to AirBnB</h1>
     <form class="max-w-lg mx-auto bg-white p-8 rounded-xl shadow-xl" action="/signup" method="post">
-        <% if(error.length>0){ %>
-            <div>
-                <% error.forEach((err) => { %>
-                    <p class="text-red-500 text-sm font-medium mb-4">
-                        <%= err %>
-                    </p>
-                <% }) %>
-            </div>
-        <% } %>
+        <%- include('../partials/errors')%>
         <div class="mb-6 relative">
             <label for="fname" class="block text-lg font-medium text-gray-700 mb-2">First Name</label>
             <div class="flex items-center">
@@ -73,7 +65,7 @@
         </div>
         <div class="mb-6">
             <label class="inline-flex items-center">
-                <input class="form-checkbox text-red-500 focus:ring-red-400" id="terms" name="terms" type="checkbox" checked="<%= oldInput.terms==='on'%>"/>
+                <input class="form-checkbox text-red-500 focus:ring-red-400" id="terms" name="terms" type="checkbox" checked="<%= oldInput.terms==='on'?true:false %>"/>
                 <span class="ml-2 text-gray-600">I accept the terms and conditions.</span>
             </label>
         </div>

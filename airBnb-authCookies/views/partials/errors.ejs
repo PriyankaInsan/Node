@@ -1,0 +1,9 @@
+<% if(error.length>0){ %>
+    <div>
+        <% error.forEach((err) => { %>
+            <p class="text-red-500 text-sm font-medium mb-4">
+                <%= err %>
+            </p>
+        <% }) %>
+    </div>
+<% } %>
