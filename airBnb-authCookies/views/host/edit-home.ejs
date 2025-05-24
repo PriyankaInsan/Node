@@ -1,7 +1,7 @@
 <%- include('../partials/header')%>
 <main class="container mx-auto mt-8 p-8 bg-white rounded-lg shadow-md">
     <h1 class="text-3xl font-bold mb-6 text-center text-gray-800"><%= editing?"Edit":"Register" %> Your Home on AirBnB</h1>
-    <form class="max-w-md mx-auto" action="/host/<%= editing?'editHome':'home' %>" method="post">
+    <form class="max-w-md mx-auto" action="/host/<%= editing?'editHome':'home' %>" method="post" enctype="multipart/form-data">
         <!-- <label for="name" >Name</label> -->
         <input class="w-full border rounded-md shadow-md px-4 py-2 mb-4 "id="name" name="name" type="text" placeholder="Enter Home" autocomplete="on" value="<%= editing?home.name:'' %>"/>
         <br>
@@ -18,7 +18,7 @@
         </select>
         <!-- <input class="w-full border rounded-md shadow-md px-4 py-2 mb-4 "id="home" name="rating" type="text" placeholder="Enter Home" autocomplete="on"/>
         <br> -->
-        <input class="w-full border rounded-md shadow-md px-4 py-2 mb-4 "id="photo" name="photo" type="file" placeholder="Select photo" autocomplete="on" value="<%= editing?home.photo:'' %>"/>
+        <input class="w-full border rounded-md shadow-md px-4 py-2 mb-4 "id="photo" accept="image/*" name="photo" type="file"/>
         <br>
         <input type="submit" value="<%= editing?'Update':'Add' %>" class="w-full bg-red-500 text-white py-2 rounded-md hover:bg-red-600 transition duration-300" />
     </form>
